@@ -1,0 +1,45 @@
+/*  PRELOADER LOGIC */
+
+.preloader {
+    height: 100vh;
+    width: 100%;
+    background-color: #060606;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 2vmax;
+    z-index: 10000;
+    transition: 0.3s;
+}
+
+.loader {
+    height: 4vmax;
+    width: 4vmax;
+    border-left: .5vmax solid #fff;
+    border-bottom: .5vmax solid #fff;
+    border-top: .5vmax solid #fff;
+    border-right: .5vmax solid #060606;
+    border-radius: 50%;
+    animation: load 1.5s linear infinite;
+}
+
+.loading{
+    font-family: var(--Orbit);
+    color: #fff;
+    font-size: 1.2vmax;
+    user-select: none;
+}
+
+@keyframes load {
+    from {
+        transform: rotateZ(0deg);
+    }
+
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+/*  PRELOADER LOGIC END */

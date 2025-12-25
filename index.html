@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CyberShield - Your All Solutions in One Place</title>
     <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="./styles/Navbar.css">
+    <link rel="stylesheet" href="./styles/loader.css">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -14,6 +17,13 @@
 </head>
 
 <body>
+    <section class="preloader" id="preloader">
+        <div class="loader"></div>
+        <h2 class="loading">Loading...</h2>
+    </section>
+
+    <button class="top" id="top">Back to Top</button>
+
     <main class="mn">
         <section class="first">
             <header class="header">
@@ -22,7 +32,7 @@
                 <nav class="nav">
                     <ul>
                         <li><a href="#">Home</a></li>
-                        <li><a href="#">About</a></li>
+                        <li><a href="about.html">About</a></li>
                         <li><a href="#">Services</a></li>
                         <li><a href="#">Products</a></li>
                         <li><a href="#">Contact</a></li>
@@ -156,6 +166,8 @@
         </div>
         <p class="ftr-par">© 2025 Made by CyberShield Developers. All rights reserved.</p>
     </footer>
+    
+    <script src="./script/main.js"></script>
 </body>
 
 </html>

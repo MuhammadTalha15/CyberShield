@@ -1,0 +1,93 @@
+/* Header an Navbar------------------------- */
+
+:root {
+    --Orbit: "Orbitron", comfortaa;
+    --Poppins: "Poppins", sans-serif;
+}
+
+.header {
+    z-index: 1000;
+    top: 0;
+    background-color: #fff;
+    position: fixed;
+    height: 4vmax;
+    width: 100%;
+    /* border: 1px solid; */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 2vmax;
+    font-family: var(--Orbit);
+    margin: 0 2vmax;
+    user-select: none;
+    cursor: pointer;
+    font-weight: 600 !important;
+}
+
+.nav {
+    height: 2.5vmax;
+    width: auto;
+    /* background-color: red; */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 2vmax;
+}
+
+.nav ul {
+    list-style: none;
+}
+
+.nav ul li {
+    display: inline-block;
+    margin: 0 1vmax;
+}
+
+.nav ul li a {
+    position: relative;
+    color: #000;
+    font-family: var(--Poppins);
+    font-size: 1vmax;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.nav ul li a::before {
+    position: absolute;
+    content: '';
+    height: 3px;
+    width: 0%;
+    background-color: black;
+    bottom: -5px;
+    transition: 0.3s;
+}
+
+.nav ul li a:hover::before {
+    width: 100%;
+}
+
+/* Header an Navbar End------------------------- */
+
+.top{
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    margin: 1vmax 2vmax;
+    height: 3vmax;
+    width: 10vmax;
+    border: 2px solid;
+    font-size: 1vmax;
+    cursor: pointer;
+    font-family: var(--Orbit);
+    font-weight: 500;
+    transition: 0.3s;
+    transform: translateX(12vmax);
+}
+
+.top:hover{
+    color: #fff;
+    background-color: #000;
+}
