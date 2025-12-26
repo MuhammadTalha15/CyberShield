@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - CyberShield</title>
+    <link rel="stylesheet" href="./styles/article.css" />
+    <link rel="stylesheet" href="./styles/Navbar.css">
+    <link rel="stylesheet" href="./styles/Footer.css">
+    <link rel="stylesheet" href="./styles/loader.css">
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600&family=Comfortaa:wght@400;700&display=swap"
+        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <section class="preloader" id="preloader">
+        <div class="loader"></div>
+        <h2 class="loading">Loading...</h2>
+    </section>
+
+    <button class="top" id="top">Back to Top</button>
+
+    <header class="header">
+        <h1 class="logo">CyberShield</h1>
+
+        <nav class="nav">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="#">Articles</a></li>
+                <li><a href="product.html">Products</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="ar-mn">
+        <aside class="side-nav">
+            <h3>Categories</h3>
+            <button class="a-btn active" data-category="all">All Articles</button>
+            <button class="a-btn" data-category="security">Cyber Security Blog</button>
+            <button class="a-btn" data-category="awareness">Cyber Awareness Blog</button>
+            <button class="a-btn" data-category="defense">Defenses Against Attacks</button>
+        </aside>
+
+        <div class="blogs" id="blogContainer">
+            <!-- Blog posts will be dynamically inserted here -->
+        </div>
+    </main>
+
+    <script>
+        const blogData = [
+            {
+                category: 'security',
+                title: 'Understanding Zero-Day Vulnerabilities',
+                excerpt: 'Explore the dangerous world of zero-day exploits and learn how organizations can protect themselves from unknown threats before patches are available.',
+                icon: '🔒',
+                date: 'Dec 20, 2025',
+                readTime: '5 min read'
+            },
+            {
+                category: 'security',
+                title: 'The Rise of AI-Powered Cyber Attacks',
+                excerpt: 'Machine learning is being weaponized by hackers. Discover how artificial intelligence is changing the cybersecurity landscape and what it means for defense strategies.',
+                icon: '🤖',
+                date: 'Dec 18, 2025',
+                readTime: '7 min read'
+            },
+            {
+                category: 'awareness',
+                title: 'Phishing Scams: How to Spot Them',
+                excerpt: 'Learn to identify sophisticated phishing attempts that target individuals and businesses. Understand the psychology behind social engineering attacks.',
+                icon: '🎣',
+                date: 'Dec 15, 2025',
+                readTime: '4 min read'
+            },
+            {
+                category: 'awareness',
+                title: 'Password Security Best Practices 2025',
+                excerpt: 'Passwords remain the first line of defense. Discover modern strategies for creating and managing strong passwords in an era of advanced cracking techniques.',
+                icon: '🔑',
+                date: 'Dec 12, 2025',
+                readTime: '6 min read'
+            },
+            {
+                category: 'defense',
+                title: 'Building a Multi-Layered Security Strategy',
+                excerpt: 'Defense in depth is crucial. Learn how to implement multiple security layers to protect your infrastructure from various attack vectors.',
+                icon: '🛡️',
+                date: 'Dec 10, 2025',
+                readTime: '8 min read'
+            },
+            {
+                category: 'defense',
+                title: 'Ransomware Defense Tactics',
+                excerpt: 'Ransomware attacks are increasing. Explore proven strategies for preventing, detecting, and recovering from ransomware incidents.',
+                icon: '💾',
+                date: 'Dec 8, 2025',
+                readTime: '7 min read'
+            },
+            {
+                category: 'security',
+                title: 'Cloud Security: Risks and Solutions',
+                excerpt: 'As businesses migrate to the cloud, new security challenges emerge. Understand cloud-specific vulnerabilities and how to mitigate them effectively.',
+                icon: '☁️',
+                date: 'Dec 5, 2025',
+                readTime: '6 min read'
+            },
+            {
+                category: 'awareness',
+                title: 'Social Media Privacy: What You Need to Know',
+                excerpt: 'Your social media presence can be a security risk. Learn how to protect your personal information and maintain privacy online.',
+                icon: '📱',
+                date: 'Dec 3, 2025',
+                readTime: '5 min read'
+            },
+            {
+                category: 'defense',
+                title: 'Network Segmentation for Enhanced Security',
+                excerpt: 'Divide and conquer your network security. Discover how proper network segmentation can limit the spread of breaches and contain threats.',
+                icon: '🌐',
+                date: 'Nov 30, 2025',
+                readTime: '9 min read'
+            }
+        ];
+
+        const blogContainer = document.getElementById('blogContainer');
+        const categoryButtons = document.querySelectorAll('.a-btn');
+
+        function renderBlogs(category = 'all') {
+            const filteredBlogs = category === 'all' ? blogData : blogData.filter(blog => blog.category === category);
+
+            if (filteredBlogs.length === 0) {
+                blogContainer.innerHTML = '<div class="no-posts">No articles found in this category.</div>';
+                return;
+            }
+
+            blogContainer.innerHTML = filteredBlogs.map(blog => `
+                <div class="blog-card">
+                    <div class="blog-image">${blog.icon}</div>
+                    <div class="blog-content">
+                        <span class="blog-category">${blog.category.toUpperCase()}</span>
+                        <h2 class="blog-title">${blog.title}</h2>
+                        <p class="blog-excerpt">${blog.excerpt}</p>
+                        <div class="blog-meta">
+                            <span>${blog.date} • ${blog.readTime}</span>
+                            <a href="#" class="read-more">Read More →</a>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const category = button.getAttribute('data-category');
+                renderBlogs(category);
+            });
+        });
+
+        // Initial render
+        renderBlogs('all');
+    </script>
+
+</body>
+<script src="script/main.js"></script>
+
+</html>

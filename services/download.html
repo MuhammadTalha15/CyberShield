@@ -1,12 +1,421 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Password Strength Checker</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: rgb(8, 8, 8);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgb(32, 32, 32);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            padding: 40px;
+            width: 50vmax;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 2em;
+            font-family: Orbitron, sans-serif;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 14px;
+        }
+
+        .password-input-container {
+            position: relative;
+            margin-bottom: 15px;
+        }
+
+        input[type="password"],
+        input[type="text"] {
+            width: 100%;
+            padding: 15px 45px 15px 15px;
+            background-color: transparent;
+            color: #fff;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #616161;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 20px;
+            user-select: none;
+        }
+
+        .strength-bar-container {
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+
+        .strength-bar {
+            height: 100%;
+            width: 0%;
+            transition: all 0.3s ease;
+            border-radius: 10px;
+        }
+
+        .strength-text {
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 20px;
+            min-height: 27px;
+        }
+
+        .requirements {
+            background-color: #616161;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .requirements h3 {
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.5vmax;
+            font-family: Orbitron, sans-serif;
+            color: #e7f3ff;
+        }
+
+        .requirement {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            color: #ffffff;
+            font-size: 14px;
+        }
+
+        .requirement-icon {
+            margin-right: 10px;
+            font-size: 18px;
+            min-width: 20px;
+        }
+
+        .requirement.met {
+            color: #00d832;
+        }
+
+        .requirement.met .requirement-icon {
+            color: #28a745;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            background: rgb(79, 79, 79);
+            padding: 15px;
+            border-radius: 10px;
+            color: white;
+            text-align: center;
+        }
+
+        .stat-box.primary {
+            background: rgb(16, 16, 16);
+        }
+
+        .stat-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .tips {
+            background: #717171;
+            border-left: 4px solid #4e00a7;
+            padding: 15px;
+            border-radius: 4px;
+            font-size: 14px;
+            color: #dddddd;
+        }
+
+        .tips h4 {
+            color: #4e00a7;
+            margin-bottom: 10px;
+        }
+
+        .tips ul {
+            margin-left: 20px;
+        }
+
+        .tips li {
+            margin-bottom: 5px;
+        }
+
+        /* Strength colors */
+        .weak {
+            background: #dc3545;
+        }
+
+        .fair {
+            background: #fd7e14;
+        }
+
+        .good {
+            background: #ffc107;
+        }
+
+        .strong {
+            background: #28a745;
+        }
+
+        .very-strong {
+            background: #0056b3;
+        }
+
+        .text-weak {
+            color: #dc3545;
+        }
+
+        .text-fair {
+            color: #fd7e14;
+        }
+
+        .text-good {
+            color: #ffc107;
+        }
+
+        .text-strong {
+            color: #28a745;
+        }
+
+        .text-very-strong {
+            color: #0056b3;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Hello World</h1>
-    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore, ex neque, minus quibusdam voluptates aperiam dolores ipsa repudiandae autem libero officia error itaque hic necessitatibus temporibus tempora architecto consequatur modi.</p>
+    <div class="container">
+        <h1>Password Strength Checker</h1>
+        <p class="subtitle">Create a strong and secure password</p>
+
+        <div class="password-input-container">
+            <input type="password" id="passwordInput" placeholder="Enter your password">
+            <span class="toggle-password" onclick="togglePassword()">👁️</span>
+        </div>
+
+        <div class="strength-bar-container">
+            <div class="strength-bar" id="strengthBar"></div>
+        </div>
+
+        <div class="strength-text" id="strengthText"></div>
+
+        <div class="stats">
+            <div class="stat-box primary">
+                <div class="stat-label">Length</div>
+                <div class="stat-value" id="lengthStat">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">Score</div>
+                <div class="stat-value" id="scoreStat">0</div>
+            </div>
+        </div>
+
+        <div class="requirements">
+            <h3>Password Requirements:</h3>
+            <div class="requirement" id="req-length">
+                <span class="requirement-icon">○</span>
+                <span>At least 8 characters</span>
+            </div>
+            <div class="requirement" id="req-uppercase">
+                <span class="requirement-icon">○</span>
+                <span>Contains uppercase letter (A-Z)</span>
+            </div>
+            <div class="requirement" id="req-lowercase">
+                <span class="requirement-icon">○</span>
+                <span>Contains lowercase letter (a-z)</span>
+            </div>
+            <div class="requirement" id="req-number">
+                <span class="requirement-icon">○</span>
+                <span>Contains number (0-9)</span>
+            </div>
+            <div class="requirement" id="req-special">
+                <span class="requirement-icon">○</span>
+                <span>Contains special character (!@#$%^&*)</span>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h4>💡 Tips for a strong password:</h4>
+            <ul>
+                <li>Use a mix of letters, numbers, and symbols</li>
+                <li>Avoid common words and patterns</li>
+                <li>Make it at least 12 characters long</li>
+                <li>Don't use personal information</li>
+                <li>Use a unique password for each account</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        const passwordInput = document.getElementById('passwordInput');
+        const strengthBar = document.getElementById('strengthBar');
+        const strengthText = document.getElementById('strengthText');
+        const lengthStat = document.getElementById('lengthStat');
+        const scoreStat = document.getElementById('scoreStat');
+
+        passwordInput.addEventListener('input', checkPasswordStrength);
+
+        function togglePassword() {
+            const input = document.getElementById('passwordInput');
+            input.type = input.type === 'password' ? 'text' : 'password';
+        }
+
+        function checkPasswordStrength() {
+            const password = passwordInput.value;
+            const length = password.length;
+
+            lengthStat.textContent = length;
+
+            if (length === 0) {
+                resetStrength();
+                return;
+            }
+
+            let score = 0;
+            let strength = '';
+            let color = '';
+            let width = 0;
+
+            // Check requirements
+            const hasLength = length >= 8;
+            const hasUppercase = /[A-Z]/.test(password);
+            const hasLowercase = /[a-z]/.test(password);
+            const hasNumber = /[0-9]/.test(password);
+            
+            const hasSpecial = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+            updateRequirement('req-length', hasLength);
+            updateRequirement('req-uppercase', hasUppercase);
+            updateRequirement('req-lowercase', hasLowercase);
+            updateRequirement('req-number', hasNumber);
+            updateRequirement('req-special', hasSpecial);
+
+            // Calculate score
+            if (hasLength) score += 20;
+            if (hasUppercase) score += 20;
+            if (hasLowercase) score += 20;
+            if (hasNumber) score += 20;
+            if (hasSpecial) score += 20;
+
+            // Bonus for length
+            if (length >= 12) score += 10;
+            if (length >= 16) score += 10;
+
+            // Penalty for common patterns
+            if (/(.)\1{2,}/.test(password)) score -= 10; // Repeated characters
+            if (/^[0-9]+$/.test(password)) score -= 20; // Only numbers
+            if (/^[a-zA-Z]+$/.test(password)) score -= 10; // Only letters
+
+            score = Math.max(0, Math.min(100, score));
+            scoreStat.textContent = score;
+
+            // Determine strength level
+            if (score < 30) {
+                strength = '❌ Very Weak';
+                color = 'weak';
+                width = 20;
+            } else if (score < 50) {
+                strength = '⚠️ Weak';
+                color = 'fair';
+                width = 40;
+            } else if (score < 70) {
+                strength = '👍 Fair';
+                color = 'good';
+                width = 60;
+            } else if (score < 90) {
+                strength = '💪 Strong';
+                color = 'strong';
+                width = 80;
+            } else {
+                strength = '🔒 Very Strong';
+                color = 'very-strong';
+                width = 100;
+            }
+
+            strengthBar.style.width = width + '%';
+            strengthBar.className = 'strength-bar ' + color;
+            strengthText.textContent = strength;
+            strengthText.className = 'strength-text text-' + color;
+        }
+
+        function updateRequirement(id, met) {
+            const element = document.getElementById(id);
+            const icon = element.querySelector('.requirement-icon');
+
+            if (met) {
+                element.classList.add('met');
+                icon.textContent = '✓';
+            } else {
+                element.classList.remove('met');
+                icon.textContent = '○';
+            }
+        }
+
+        function resetStrength() {
+            strengthBar.style.width = '0%';
+            strengthBar.className = 'strength-bar';
+            strengthText.textContent = '';
+            strengthText.className = 'strength-text';
+            scoreStat.textContent = '0';
+
+            ['req-length', 'req-uppercase', 'req-lowercase', 'req-number', 'req-special'].forEach(id => {
+                updateRequirement(id, false);
+            });
+        }
+    </script>
 </body>
+
 </html>
