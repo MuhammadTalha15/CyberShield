@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - CyberShield</title>
+    <title>Articles - CyberShield</title>
+    <link rel="shortcut icon" href="./assets/fav.png" type="image/x-icon">
     <link rel="stylesheet" href="./styles/article.css" />
     <link rel="stylesheet" href="./styles/Navbar.css">
     <link rel="stylesheet" href="./styles/Footer.css">
@@ -75,15 +76,15 @@
                 category: 'security',
                 title: 'Understanding Zero-Day Vulnerabilities',
                 excerpt: 'Explore the dangerous world of zero-day exploits and learn how organizations can protect themselves from unknown threats before patches are available.',
-                icon: '🔒',
+                icon: './assets/articles/zero-day.jpg',
                 date: 'Dec 20, 2025',
                 readTime: '5 min read'
             },
             {
                 category: 'security',
-                title: 'The Rise of AI-Powered Cyber Attacks',
+                title: 'The Rise of AI-Powered Cyber Atacks',
                 excerpt: 'Machine learning is being weaponized by hackers. Discover how artificial intelligence is changing the cybersecurity landscape and what it means for defense strategies.',
-                icon: '🤖',
+                icon: './assets/articles/aic.jpg',
                 date: 'Dec 18, 2025',
                 readTime: '7 min read'
             },
@@ -91,7 +92,7 @@
                 category: 'awareness',
                 title: 'Phishing Scams: How to Spot Them',
                 excerpt: 'Learn to identify sophisticated phishing attempts that target individuals and businesses. Understand the psychology behind social engineering attacks.',
-                icon: '🎣',
+                icon: './assets/articles/ph.jpg',
                 date: 'Dec 15, 2025',
                 readTime: '4 min read'
             },
@@ -99,7 +100,7 @@
                 category: 'awareness',
                 title: 'Password Security Best Practices 2025',
                 excerpt: 'Passwords remain the first line of defense. Discover modern strategies for creating and managing strong passwords in an era of advanced cracking techniques.',
-                icon: '🔑',
+                icon: './assets/articles/pas.jpg',
                 date: 'Dec 12, 2025',
                 readTime: '6 min read'
             },
@@ -107,7 +108,7 @@
                 category: 'defense',
                 title: 'Building a Multi-Layered Security Strategy',
                 excerpt: 'Defense in depth is crucial. Learn how to implement multiple security layers to protect your infrastructure from various attack vectors.',
-                icon: '🛡️',
+                icon: './assets/articles/mul.avif',
                 date: 'Dec 10, 2025',
                 readTime: '8 min read'
             },
@@ -115,7 +116,7 @@
                 category: 'defense',
                 title: 'Ransomware Defense Tactics',
                 excerpt: 'Ransomware attacks are increasing. Explore proven strategies for preventing, detecting, and recovering from ransomware incidents.',
-                icon: '💾',
+                icon: './assets/articles/ransom.jpg',
                 date: 'Dec 8, 2025',
                 readTime: '7 min read'
             },
@@ -123,7 +124,7 @@
                 category: 'security',
                 title: 'Cloud Security: Risks and Solutions',
                 excerpt: 'As businesses migrate to the cloud, new security challenges emerge. Understand cloud-specific vulnerabilities and how to mitigate them effectively.',
-                icon: '☁️',
+                icon: './assets/articles/cl.jpg',
                 date: 'Dec 5, 2025',
                 readTime: '6 min read'
             },
@@ -131,7 +132,7 @@
                 category: 'awareness',
                 title: 'Social Media Privacy: What You Need to Know',
                 excerpt: 'Your social media presence can be a security risk. Learn how to protect your personal information and maintain privacy online.',
-                icon: '📱',
+                icon: './assets/articles/social.png',
                 date: 'Dec 3, 2025',
                 readTime: '5 min read'
             },
@@ -139,7 +140,7 @@
                 category: 'defense',
                 title: 'Network Segmentation for Enhanced Security',
                 excerpt: 'Divide and conquer your network security. Discover how proper network segmentation can limit the spread of breaches and contain threats.',
-                icon: '🌐',
+                icon: './assets/articles/net.avif',
                 date: 'Nov 30, 2025',
                 readTime: '9 min read'
             }
@@ -158,7 +159,9 @@
 
             blogContainer.innerHTML = filteredBlogs.map(blog => `
                 <div class="blog-card">
-                    <div class="blog-image">${blog.icon}</div>
+                    <div class="blog-image">
+                        <img class="images-art" src="${blog.icon}"></img>
+                    </div>
                     <div class="blog-content">
                         <span class="blog-category">${blog.category.toUpperCase()}</span>
                         <h2 class="blog-title">${blog.title}</h2>
