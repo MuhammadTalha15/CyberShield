@@ -85,6 +85,7 @@
     font-weight: 500;
     transition: 0.3s;
     transform: translateX(12vmax);
+    color: #000;
 }
 
 .top:hover{

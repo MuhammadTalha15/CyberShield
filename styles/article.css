@@ -21,12 +21,12 @@ body {
 }
 
 .side-nav {
-    width: 280px;
+    width: 15vmax;
+    height: 20vmax;
     position: fixed;
     top: 100px;
     left: 0;
-    height: 30vmax;
-    background: #f8f9fa;
+    background: #fff;
     padding: 1vmax 1vmax;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
@@ -44,7 +44,7 @@ body {
     margin-bottom: 12px;
     background: white;
     border: 2px solid #e0e0e0;
-    border-radius: 10px;
+    /* border-radius: 10px; */
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-weight: 500;
@@ -85,8 +85,10 @@ body {
 }
 
 .blogs {
-    padding: 3vmax 0;
+    padding: 3vmax;
+    /* padding-left: 50vmax; */
     flex: 1;
+    /* border: 1px solid; */
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 30px;

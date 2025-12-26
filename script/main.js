@@ -18,7 +18,7 @@ const toTop = document.getElementById('top');
 
 window.addEventListener('scroll', ()=> {
     if (window.scrollY > 500) {
-        toTop.style.transform = `translateX(0)`;
+        toTop.style.transform = `translateX(1vmax)`;
     }
     else{
         toTop.style.transform = `translateX(12vmax)`;
@@ -32,9 +32,9 @@ toTop.addEventListener('click', () => {
 
 // DOWNLOAD FILE -------------
 
-// const link = document.getElementById('download');
+const link = document.getElementById('download');
 
-// link.addEventListener('click', () => {
-//     link.href = "./services/download.html";
-//     link.download = "download.html";
-// })
+link.addEventListener('click', () => {
+    link.href = "./services/download.html";
+    link.download = "download.html";
+})

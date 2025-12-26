@@ -14,31 +14,26 @@ body {
 }
 
 .main-content {
-  padding: 80px 20px;
-  min-height: calc(100vh - 80px);
+  padding-top: 5vmax;
+  height: auto;
   background-color: #FFFFFF;
   background-image: url(../assets/wall.png);
   background-size: cover;
   background-position: center;
-}
-
-.container {
-  max-width: 100%;
-  /* margin: 0 auto; */
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
 }
 
-.page-header {
-  text-align: center;
-  /* margin-bottom: 80px; */
-  /* border: 1px solid; */
+.container {
+  width: 80%;
+  /* margin: 0 auto; */
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
   flex-direction: column;
+  /* border: 1px solid; */
 }
 
 .page-title {
@@ -46,8 +41,7 @@ body {
   font-size: 56px;
   font-weight: 700;
   color: #000000;
-  margin: 0;
-  letter-spacing: 2px;
+  /* margin: 0; */
 }
 
 .page-title-head {
@@ -62,7 +56,6 @@ body {
   justify-content: center;
   flex-direction: column;
   width: 60vmax;
-  gap: 1vmax;
   margin-top: 40px;
   /* border: 1px solid; */
 }
@@ -101,6 +94,7 @@ body {
 }
 
 .ser-sec-a {
+  width: auto;
   color: #000;
   text-decoration: none;
   font-family: var(--Orbit);
@@ -121,124 +115,3 @@ body {
 }
 
 /* ------------------------------------ */
-
-@media (max-width: 768px) {
-  .navdiv {
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  .logo a {
-    padding-left: 0;
-  }
-
-  .navdiv ul {
-    padding-right: 0;
-    gap: 20px;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .navdiv ul li a {
-    font-size: 14px;
-  }
-
-  .main-content {
-    padding: 60px 20px;
-  }
-
-  .page-title {
-    font-size: 42px;
-  }
-
-  .product-grid {
-    grid-template-columns: 1fr;
-    gap: 40px;
-  }
-
-  .product-card {
-    height: auto;
-    min-height: 500px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding: 30px;
-  }
-
-  .card-title {
-    font-size: 28px;
-  }
-
-  .card-description {
-    font-size: 16px;
-  }
-}
-
-@media (max-width: 480px) {
-  .navbar {
-    padding: 15px 10px;
-  }
-
-  .navdiv ul {
-    gap: 15px;
-  }
-
-  .navdiv ul li a {
-    font-size: 13px;
-  }
-
-  .main-content {
-    padding: 50px 15px;
-  }
-
-  .page-header {
-    margin-bottom: 50px;
-  }
-
-  .page-title {
-    font-size: 32px;
-  }
-
-  .product-grid {
-    gap: 30px;
-  }
-
-  .card-header,
-  .card-body,
-  .card-footer {
-    padding: 25px;
-  }
-
-  .card-title {
-    font-size: 24px;
-  }
-
-  .card-description {
-    font-size: 15px;
-  }
-
-  .download-btn {
-    padding: 15px 30px;
-    font-size: 14px;
-  }
-}
-
-@media (max-width: 360px) {
-  .logo a {
-    font-size: 20px;
-  }
-
-  .page-title {
-    font-size: 28px;
-  }
-
-  .card-title {
-    font-size: 22px;
-  }
-
-  .card-description {
-    font-size: 14px;
-  }
-}
