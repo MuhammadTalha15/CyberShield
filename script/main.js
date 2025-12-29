@@ -34,7 +34,9 @@ toTop.addEventListener('click', () => {
 
 const link = document.getElementById('download');
 
-link.addEventListener('click', () => {
-    link.href = "./services/download.html";
-    link.download = "download.html";
-})
+link.addEventListener('click', (e) => {
+    // e.preventDefault();
+    link.href = "./services/App.rar";
+    link.download = "MyApp.rar";
+    link.click();
+});
